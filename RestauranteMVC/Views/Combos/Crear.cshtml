@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Combo";
+}
+
+<h2 class="text-center mt-4">Combo</h2>
+
+<form>
+    <div class="form-group">
+        <label>Nombre</label>
+        @Html.TextBox("Nombre", "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Descripción</label>
+        @Html.TextBox("Descripcion", "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Precio</label>
+        @Html.TextBox("Precio", "", new { @class = "form-control", type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de creación</label>
+        @Html.TextBox("FechaCreacion", "", new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="mt-4 text-center">
+        <button type="button" class="btn btn-success me-2">Crear</button>
+        <button type="button" class="btn btn-danger me-2">Eliminar</button>
+        <button type="button" class="btn btn-warning text-white me-2">Modificar</button>
+        <button type="button" class="btn btn-purple" style="background-color: purple; color: white;">Buscar</button>
+    </div>
+</form>

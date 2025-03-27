@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Agregar Nuevo Platillo";
+}
+
+<h2 class="text-center mt-4">Agregar Nuevo Platillo</h2>
+
+<form>
+    <div class="form-group">
+        <label>Nombre</label>
+        @Html.TextBox("Nombre", "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Descripción</label>
+        @Html.TextBox("Descripcion", "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Precio</label>
+        @Html.TextBox("Precio", "", new { @class = "form-control", type = "number" })
+    </div>
+
+    <div class="form-group">
+        <label>Imagen</label>
+        @Html.TextBox("Imagen", "", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Fecha de creación</label>
+        @Html.TextBox("FechaCreacion", "", new { @class = "form-control", type = "date" })
+    </div>
+
+    <div class="form-group">
+        <label>CategoríaID</label>
+        @Html.TextBox("CategoriaID", "", new { @class = "form-control" })
+    </div>
+
+    <div class="mt-4 text-center">
+        <button type="button" class="btn btn-success">CREAR</button>
+        <button type="button" class="btn btn-primary">Modificar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+    </div>
+</form>
