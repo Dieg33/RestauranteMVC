@@ -1,6 +1,26 @@
+using RestauranteMVC.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(3600);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 // Add services to the container.
+builder.Services.AddControllersWithViews();
+
+
+
+builder.Services.AddDbContext<RestauranteDbContext>(opt =>
+opt.UseSqlServer(
+builder.Configuration.GetConnectionString("RestauranteDBProyectoADBConnection")));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -19,6 +39,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
