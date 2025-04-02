@@ -46,14 +46,14 @@ namespace RestauranteMVC.Controllers
         public async Task<IActionResult> Autenticar(string txtEmail, string txtClave)
         {
             var empleado = (from e in _context.Empleados
-                            where e.Email == txtEmail && e.contrasenia == txtClave && e.RolID != 0
+                            where e.Email == txtEmail && e.Contrasena == txtClave && e.RolID != 0
                             select e).FirstOrDefault();
             if (empleado != null)
             {
                 HttpContext.Session.SetInt32("EmpleadoId", empleado.EmpleadoId);
                 HttpContext.Session.SetString("RolID", empleado.RolID.ToString());
                 HttpContext.Session.SetString("Nombre", empleado.Nombre);
-                return RedirectToAction("Admin", "Home");
+                return RedirectToAction("Index", "Admin");
             }
             ViewData["ErrorMessage"] = "Error, empleado inválido!";
             return View();
@@ -71,6 +71,10 @@ namespace RestauranteMVC.Controllers
             ViewData["ErrorMessage"] = "";
             return View();
         }
+
+       
+        
+
 
     }
 }

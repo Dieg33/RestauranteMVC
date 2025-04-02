@@ -11,7 +11,7 @@ namespace RestauranteMVC.Models
         public string Email { get; set; }
         public string Telefono { get; set; }
 
-        public string contrasenia { get; set; }
+        public string Contrasena { get; set; }
     
         public int RolID { get; set; }
         public DateTime FechaIngreso {get; set;}
