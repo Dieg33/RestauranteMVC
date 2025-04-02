@@ -10,5 +10,6 @@ namespace RestauranteMVC.Models
         }
 
         public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<Rol> Rol { get; set; }
     }
 }
