@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RestauranteMVC.Models.Promociones
+@{
+    ViewBag.Title = "Crear Promoción";
+    var platos = ViewBag.Platos as SelectList;
+    var combos = ViewBag.Combos as SelectList;
+}
+<h2 class="mb-4">Crear Promoción</h2>
+
+@using (Html.BeginForm("Create", "Promociones", FormMethod.Post))
+{
+    <div class="row g-3">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Descripcion, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Descuento, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Descuento, new { @class = "form-control", type = "number", step = "0.01" })
+            @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.FechaInicio, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.FechaInicio, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.FechaFin, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.FechaFin, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Platos</label>
+            @foreach (var item in platos)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="platosSeleccionados" value="@item.Value" />
+                    <label class="form-check-label">@item.Text</label>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Combos</label>
+            @foreach (var item in combos)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="combosSeleccionados" value="@item.Value" />
+                    <label class="form-check-label">@item.Text</label>
+                </div>
+            }
+        </div>
+
+        <div class="col-12">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+        </div>
+    </div>
+}

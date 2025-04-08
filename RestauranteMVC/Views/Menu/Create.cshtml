@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RestauranteMVC.Models.Menu
+@{
+    ViewData["Title"] = "Crear Nuevo Menú";
+}
+<h2>Crear Menú</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Descripcion"></label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Promociones</label>
+        <div class="form-check">
+            @foreach (var promo in ViewBag.Promociones)
+            {
+                <input type="checkbox"
+                       name="promocionesSeleccionadas"
+                       value="@promo.Value"
+                       class="form-check-input"
+                       id="promo-@promo.Value" />
+                <label class="form-check-label" for="promo-@promo.Value">@promo.Text</label>
+
+                <br />
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Platos</label>
+        <div class="form-check">
+            @foreach (var plato in ViewBag.Platos)
+            {
+                <input type="checkbox"
+                       name="platosSeleccionados"
+                       value="@plato.Value"
+                       class="form-check-input"
+                       id="plato-@plato.Value" />
+                <label class="form-check-label" for="plato-@plato.Value">@plato.Text</label>
+
+                <br />
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Combos</label>
+        <div class="form-check">
+            @foreach (var combo in ViewBag.Combos)
+            {
+                <input type="checkbox"
+                       name="combosSeleccionados"
+                       value="@combo.Value"
+                       class="form-check-input"
+                       id="combo-@combo.Value" />
+                <label class="form-check-label" for="combo-@combo.Value">@combo.Text</label>
+
+                <br />
+            }
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Regresar</a>

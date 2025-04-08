@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<RestauranteMVC.Models.Promociones>
+
+@{
+    ViewData["Title"] = "Lista de Promociones";
+}
+
+<h2 class="text-primary">Lista de Promociones</h2>
+<a asp-action="Create" class="btn btn-success mb-3">Crear Nueva Promoción</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Descripción</th>
+            <th>Descuento</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Platos</th>
+            <th>Combos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Descripcion</td>
+                <td>@item.Descuento.ToString()%</td>
+                <td>@item.FechaInicio.ToShortDateString()</td>
+                <td>@item.FechaFin.ToShortDateString()</td>
+                <td>
+                    <ul>
+                        @foreach (var pi in item.Promociones_Items.Where(p => p.PlatoID != null))
+                        {
+                            <li>@pi.Plato?.Nombre</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var pi in item.Promociones_Items.Where(p => p.ComboID != null))
+                        {
+                            <li>@pi.Combo?.Nombre</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PromocionID" class="btn btn-sm btn-primary">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.PromocionID" class="btn btn-sm btn-info">Ver</a>
+                    <a asp-action="Delete" asp-route-id="@item.PromocionID" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

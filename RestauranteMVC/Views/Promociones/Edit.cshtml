@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RestauranteMVC.Models.Promociones
+@{
+    ViewData["Title"] = "Editar Promoción";
+    var platos = ViewBag.Platos as SelectList;
+    var combos = ViewBag.Combos as SelectList;
+    var platosSeleccionados = ViewBag.PlatosSeleccionados as List<int>;
+    var combosSeleccionados = ViewBag.CombosSeleccionados as List<int>;
+}
+<h2 class="mb-4">Editar Promoción</h2>
+
+@using (Html.BeginForm("Edit", "Promociones", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.PromocionID)
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            @Html.LabelFor(model => model.Descripcion, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Descuento, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.Descuento, new { @class = "form-control", type = "number", step = "0.01" })
+            @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.FechaInicio, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.FechaInicio, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.FechaFin, new { @class = "form-label" })
+            @Html.TextBoxFor(model => model.FechaFin, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Platos</label>
+            <div class="form-check">
+                @foreach (var plato in ViewBag.Platos)
+                {
+                    <input type="checkbox"
+                           name="platosSeleccionados"
+                           value="@plato.Value"
+                           class="form-check-input"
+                    @(plato.Selected ? "checked" : "") />
+                    <label class="form-check-label">@plato.Text</label>
+
+                    <br />
+                }
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Combos</label>
+            <div class="form-check">
+                @foreach (var combo in ViewBag.Combos)
+                {
+                    <input type="checkbox"
+                           name="combosSeleccionados"
+                           value="@combo.Value"
+                           class="form-check-input"
+                    @(combo.Selected ? "checked" : "") />
+                    <label class="form-check-label">@combo.Text</label>
+
+                    <br />
+                }
+            </div>
+        </div>
+
+        <div class="col-12">
+            <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+        </div>
+    </div>
+}

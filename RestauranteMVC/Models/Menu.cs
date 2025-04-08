@@ -7,9 +7,10 @@ namespace RestauranteMVC.Models
         [Key]
 
         public int MenuID { get; set; }
-        public string Nobre { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion {  get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } = DateTime.Now;
+        public ICollection<Menu_Items> Menu_Items { get; set; } = new List<Menu_Items>();
 
     }
 }

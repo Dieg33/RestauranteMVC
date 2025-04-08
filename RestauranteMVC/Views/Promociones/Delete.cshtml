@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RestauranteMVC.Models.Promociones
+@{
+    ViewBag.Title = "Eliminar Promoción";
+}
+
+<h2 class="mb-4">Eliminar Promoción</h2>
+
+<div class="alert alert-danger">
+    ¿Estás seguro de que deseas eliminar esta promoción?
+</div>
+
+<div class="card shadow-sm p-4 mb-4">
+    <dl class="row">
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9">@Model.Descripcion</dd>
+
+        <dt class="col-sm-3">Descuento</dt>
+        <dd class="col-sm-9">@Model.Descuento %</dd>
+
+        <dt class="col-sm-3">Fecha de Inicio</dt>
+        <dd class="col-sm-9">@Model.FechaInicio.ToString("yyyy-MM-dd")</dd>
+
+        <dt class="col-sm-3">Fecha de Fin</dt>
+        <dd class="col-sm-9">@Model.FechaFin.ToString("yyyy-MM-dd")</dd>
+    </dl>
+
+    <h5 class="mt-4">Platos Asociados</h5>
+    @if (Model.Promociones_Items.Any(p => p.Plato != null))
+    {
+        <ul class="list-group mb-3">
+            @foreach (var item in Model.Promociones_Items.Where(p => p.Plato != null))
+            {
+                <li class="list-group-item">@item.Plato.Nombre</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No hay platos asociados.</p>
+    }
+
+    <h5>Combos Asociados</h5>
+    @if (Model.Promociones_Items.Any(c => c.Combo != null))
+    {
+        <ul class="list-group mb-3">
+            @foreach (var item in Model.Promociones_Items.Where(c => c.Combo != null))
+            {
+                <li class="list-group-item">@item.Combo.Nombre</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="text-muted">No hay combos asociados.</p>
+    }
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="PromocionID" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>

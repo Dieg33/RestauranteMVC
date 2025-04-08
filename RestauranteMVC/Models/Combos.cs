@@ -7,7 +7,7 @@ namespace RestauranteMVC.Models
         [Key]
 
         public int ComboID { get; set; }
-        public string nombre { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string ImagenURL { get; set; }
         public decimal Precio { get; set; }
