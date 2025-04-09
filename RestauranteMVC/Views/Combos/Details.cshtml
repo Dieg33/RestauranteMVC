@@ -1,0 +1,23 @@
+﻿@model RestauranteMVC.Models.Combo
+@{
+    ViewData["Title"] = "Detalles del Combo";
+}
+<h1>Detalles del Combo</h1>
+
+<div>
+    <h4>@Model.Nombre</h4>
+    <p>@Model.Descripcion</p>
+    <p>Precio: @Model.Precio</p>
+    <p>Fecha de Creación: @Model.FechaCreacion</p>
+
+    <h5>Platos incluidos:</h5>
+    <ul>
+        @foreach (var item in Model.PlatosCombos)
+        {
+            <li>@item.Plato.Nombre</li>
+        }
+    </ul>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.ComboID" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>
