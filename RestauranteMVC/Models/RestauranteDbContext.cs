@@ -22,5 +22,23 @@ namespace RestauranteMVC.Models
         public DbSet<Combos> Combos {  get; set; }
         public DbSet <Categorias>Categorias { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PlatosCombos>()
+                .HasKey(pc => new { pc.ComboID, pc.PlatoID });
+
+            modelBuilder.Entity<PlatosCombos>()
+                .HasOne(pc => pc.Combo)
+                .WithMany(c => c.PlatosCombos)
+                .HasForeignKey(pc => pc.ComboID);
+
+            modelBuilder.Entity<PlatosCombos>()
+                .HasOne(pc => pc.Plato)
+                .WithMany(p => p.PlatosCombos)
+                .HasForeignKey(pc => pc.PlatoID);
+        }
+
+
     }
+  
 }

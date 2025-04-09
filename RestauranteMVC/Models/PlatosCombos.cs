@@ -4,9 +4,10 @@ namespace RestauranteMVC.Models
 {
     public class PlatosCombos
     {
-        [Key]
         public int ComboID { get; set; }
-        public int PlatoID {  get; set; }
+        public Combo Combo { get; set; }
 
+        public int PlatoID { get; set; }
+        public Platos Plato { get; set; }
     }
 }
