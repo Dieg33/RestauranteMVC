@@ -1,0 +1,21 @@
+﻿@model RestauranteMVC.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro que deseas eliminar este empleado?</h4>
+
+<div>
+    <h5>@Model.Nombre @Model.Apellido</h5>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Rol:</strong> @Model.Rol?.Nombre</p>
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="EmpleadoID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
