@@ -1,48 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Empleados";
+﻿@model IEnumerable<RestauranteMVC.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Lista de Empleados";
 }
 
-<h2 class="text-center mt-4">Empleados</h2>
+<h2>@ViewData["Title"]</h2>
+<a asp-action="Create" class="btn btn-success mb-3">Agregar Empleado</a>
 
-<form>
-    <div class="form-group">
-        <label>Nombre</label>
-        @Html.TextBox("Nombre", "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>Apellido</label>
-        @Html.TextBox("Apellido", "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>Email</label>
-        @Html.TextBox("Email", "", new { @class = "form-control", type = "email" })
-    </div>
-
-    <div class="form-group">
-        <label>Teléfono</label>
-        @Html.TextBox("Telefono", "", new { @class = "form-control", type = "tel" })
-    </div>
-
-    <div class="form-group">
-        <label>Contraseña</label>
-        @Html.Password("Contrasena", "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>RolID</label>
-        @Html.TextBox("RolID", "", new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        <label>Fecha de ingreso</label>
-        @Html.TextBox("FechaIngreso", "", new { @class = "form-control", type = "date" })
-    </div>
-
-    <div class="mt-4 text-center">
-        <button type="button" class="btn btn-success">CREAR</button>
-        <button type="button" class="btn btn-secondary">X Baja</button>
-        <button type="button" class="btn btn-primary">Buscar</button>
-    </div>
-</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Email</td>
+                <td>@item.Telefono</td>
+                <td>@item.Rol?.Nombre</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmpleadoID" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.EmpleadoID" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.EmpleadoID" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

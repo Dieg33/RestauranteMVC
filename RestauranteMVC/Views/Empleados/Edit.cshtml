@@ -1,0 +1,49 @@
+﻿@model RestauranteMVC.Models.Empleado
+
+@{
+    ViewData["Title"] = "Editar Empleado";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="EmpleadoID" />
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Apellido"></label>
+        <input asp-for="Apellido" class="form-control" />
+        <span asp-validation-for="Apellido" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Contrasena"></label>
+        <input asp-for="Contrasena" class="form-control" type="password" />
+        <span asp-validation-for="Contrasena" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UrlFotoEmpleado"></label>
+        <input asp-for="UrlFotoEmpleado" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="RolID"></label>
+        <select asp-for="RolID" class="form-control" asp-items="ViewBag.RolID"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaIngreso"></label>
+        <input asp-for="FechaIngreso" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
