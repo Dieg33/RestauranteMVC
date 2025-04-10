@@ -1,0 +1,20 @@
+﻿@model RestauranteMVC.Models.PlatosCombos
+
+@{
+    ViewData["Title"] = "Agregar Platillo a Combo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="ComboID"></label>
+        <select asp-for="ComboID" class="form-control" asp-items="ViewBag.ComboID"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="PlatoID"></label>
+        <select asp-for="PlatoID" class="form-control" asp-items="ViewBag.PlatoID"></select>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,17 @@
+﻿@model RestauranteMVC.Models.Combo
+
+@{
+    ViewData["Title"] = "Eliminar Combo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro que deseas eliminar este combo?</h4>
+<p><strong>Nombre:</strong> @Model.Nombre</p>
+<p><strong>Precio:</strong> $@Model.Precio</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="ComboID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

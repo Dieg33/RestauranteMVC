@@ -1,0 +1,30 @@
+﻿@model IEnumerable<RestauranteMVC.Models.PlatosCombos>
+
+@{
+    ViewData["Title"] = "Platos en Combos";
+}
+
+<h2>@ViewData["Title"]</h2>
+<a asp-action="Create" class="btn btn-success mb-3">Agregar Platillo a Combo</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Combo</th>
+            <th>Platillo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Combo?.Nombre</td>
+                <td>@item.Plato?.Nombre</td>
+                <td>
+                    <a asp-action="Delete" asp-route-comboID="@item.ComboID" asp-route-platoID="@item.PlatoID" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

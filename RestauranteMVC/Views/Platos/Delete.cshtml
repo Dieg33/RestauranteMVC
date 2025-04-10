@@ -1,0 +1,18 @@
+﻿@model RestauranteMVC.Models.Plato
+
+@{
+    ViewData["Title"] = "Eliminar Platillo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro que deseas eliminar este platillo?</h4>
+<p><strong>Nombre:</strong> @Model.Nombre</p>
+<p><strong>Precio:</strong> $@Model.Precio</p>
+<p><strong>Categoría:</strong> @Model.Categoria?.Nombre</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="PlatoID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

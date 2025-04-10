@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RestauranteMVC.Models
 {
@@ -8,21 +10,22 @@ namespace RestauranteMVC.Models
         public int ComboID { get; set; }
 
         [Required]
-        public string? Nombre { get; set; }
+        [MaxLength(100)]
+        public string Nombre { get; set; } = string.Empty;
 
+        [MaxLength(255)]
         public string? Descripcion { get; set; }
 
+        [Display(Name = "Imagen (URL)")]
         public string? ImagenURL { get; set; }
 
         [Required]
+        [Range(0.01, 9999.99)]
         public decimal Precio { get; set; }
 
+        [Display(Name = "Fecha de Creación")]
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
-        // Relación muchos-a-muchos con Platos a través de la tabla intermedia
-        public ICollection<PlatosCombos>? PlatosCombos { get; set; } = [];
-
-        // Para la vista Create/Edit
-        public List<int> PlatosSeleccionados { get; set; } = [];
+        public ICollection<PlatosCombos>? PlatosCombos { get; set; }
     }
 }
