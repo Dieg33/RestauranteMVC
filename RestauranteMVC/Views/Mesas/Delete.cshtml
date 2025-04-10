@@ -1,0 +1,18 @@
+﻿@model RestauranteMVC.Models.Mesa
+
+@{
+    ViewData["Title"] = "Eliminar Mesa";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro que deseas eliminar esta mesa?</h4>
+<p><strong>Número:</strong> @Model.NumeroMesa</p>
+<p><strong>Capacidad:</strong> @Model.Capacidad</p>
+<p><strong>Estado:</strong> @(Model.Estado ? "Ocupada" : "Disponible")</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="MesaID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
