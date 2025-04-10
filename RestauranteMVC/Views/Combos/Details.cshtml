@@ -1,7 +1,9 @@
 ﻿@model RestauranteMVC.Models.Combo
+
 @{
     ViewData["Title"] = "Detalles del Combo";
 }
+
 <h1>Detalles del Combo</h1>
 
 <div>
@@ -12,9 +14,16 @@
 
     <h5>Platos incluidos:</h5>
     <ul>
-        @foreach (var item in Model.PlatosCombos)
+        @if (Model.PlatosCombos != null && Model.PlatosCombos.Any())
         {
-            <li>@item.Plato.Nombre</li>
+            foreach (var item in Model.PlatosCombos)
+            {
+                <li>@item.Plato?.Nombre</li>
+            }
+        }
+        else
+        {
+            <li>No hay platos asignados.</li>
         }
     </ul>
 </div>

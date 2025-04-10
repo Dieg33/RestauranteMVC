@@ -10,18 +10,18 @@ namespace RestauranteMVC.Models
 
         [ForeignKey("Menu")]
         public int MenuID { get; set; }
-        public Menu Menu { get; set; }
+        public Menu Menu { get; set; } = default!;
 
         [ForeignKey("Platos")]
         public int? PlatoID { get; set; }
-        public Platos Platos { get; set; }
+        public Platos? Platos { get; set; } = default;
 
         [ForeignKey("Combos")]
         public int? ComboID { get; set; }
-        public Combos Combos { get; set; }
+        public Combo? Combos { get; set; } = default;
 
         [ForeignKey("Promociones")]
         public int? PromocionID { get; set; }
-        public Promociones Promociones { get; set; }
+        public Promociones? Promociones { get; set; } = default;
     }
 }

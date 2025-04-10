@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<RestauranteMVC.Models.Combo>
+
 @{
     ViewData["Title"] = "Lista de Combos";
 }
@@ -20,20 +21,18 @@
     </thead>
     <tbody>
         @foreach (var combo in Model)
-        
-
-                <tr>
-                    <td>@combo.Nombre</td>
-                    <td>@combo.Descripcion</td>
-                    <td>@combo.Precio</td>
-                    <td>@combo.FechaCreacion.ToShortDateString()</td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@combo.ComboID" class="btn btn-info btn-sm">Detalles</a>
-                        <a asp-action="Edit" asp-route-id="@combo.ComboID" class="btn btn-warning btn-sm">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@combo.ComboID" class="btn btn-danger btn-sm">Eliminar</a>
-                    </td>
-                </tr>
+        {
+            <tr>
+                <td>@combo.Nombre</td>
+                <td>@combo.Descripcion</td>
+                <td>@combo.Precio</td>
+                <td>@combo.FechaCreacion.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@combo.ComboID" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@combo.ComboID" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@combo.ComboID" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
-
