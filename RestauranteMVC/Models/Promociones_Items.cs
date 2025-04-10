@@ -10,14 +10,14 @@ namespace RestauranteMVC.Models
 
         public int? PromocionID { get; set; }
         [ForeignKey("PromocionID")]
-        public Promociones Promocion { get; set; }
+        public Promociones? Promocion { get; set; }
 
         public int? PlatoID { get; set; }
         [ForeignKey("PlatoID")]
-        public Platos Plato { get; set; }
+        public Platos? Plato { get; set; }
 
         public int? ComboID { get; set; }
         [ForeignKey("ComboID")]
-        public Combos Combo { get; set; }
+        public Combo? Combo { get; set; }
     }
 }
