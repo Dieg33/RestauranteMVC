@@ -38,17 +38,18 @@ public class HomeController(ILogger<HomeController> logger, RestauranteDbContext
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public IActionResult Autenticar(string txtEmail, string txtClave)
+    // POST: Autenticar usando un modelo Empleado
+    [HttpPost]
+    public IActionResult Autenticar(Empleado modelo)
     {
-        var empleado = (from e in _context.Empleados
-                        where e.Email == txtEmail && e.Contrasena == txtClave && e.RolID != 0
-                        select e).FirstOrDefault();
+        var empleado = _context.Empleados
+            .FirstOrDefault(e => e.Email == modelo.Email && e.Contrasena == modelo.Contrasena && e.RolID != 0);
 
         if (empleado != null)
         {
-            HttpContext.Session.SetInt32("EmpleadoID", empleado.EmpleadoID); // corregido
+            HttpContext.Session.SetInt32("EmpleadoID", empleado.EmpleadoID);
             HttpContext.Session.SetString("RolID", empleado.RolID.ToString());
-            HttpContext.Session.SetString("Nombre", empleado.Nombre ?? ""); // protegido contra null
+            HttpContext.Session.SetString("Nombre", empleado.Nombre ?? "");
 
             return RedirectToAction("Index", "Admin");
         }
