@@ -14,7 +14,7 @@ namespace RestauranteMVC.Models
 
         [ForeignKey("Platos")]
         public int? PlatoID { get; set; }
-        public Platos? Platos { get; set; } = default;
+        public Plato? Platos { get; set; } = default;
 
         [ForeignKey("Combos")]
         public int? ComboID { get; set; }
