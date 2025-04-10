@@ -19,7 +19,7 @@ namespace RestauranteMVC.Models
 
         public int? CategoriaID { get; set; }
 
-        public required Categorias Categoria { get; set; }
+        public required Categoria Categoria { get; set; }
 
         public ICollection<PlatosCombos> PlatosCombos { get; set; } = [];
     }
