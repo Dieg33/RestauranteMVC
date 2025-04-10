@@ -15,7 +15,7 @@ namespace RestauranteMVC.Models
         public DbSet<Mesa> Mesa { get; set; }
         public DbSet<MetodosPago> MetodosPagos { get; set; }
         public DbSet<Combo> Combos { get; set; }
-        public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

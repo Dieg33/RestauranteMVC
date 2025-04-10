@@ -2,14 +2,16 @@
 
 namespace RestauranteMVC.Models
 {
-    public class Categorias
+    public class Categoria
     {
         [Key]
-
         public int CategoriaID { get; set; }
 
-        public string? Nombre { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Nombre { get; set; } = string.Empty;
 
-        public string? Descripcion {  get; set; }
+        [MaxLength(255)]
+        public string? Descripcion { get; set; }
     }
 }

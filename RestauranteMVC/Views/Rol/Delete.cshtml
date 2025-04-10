@@ -1,0 +1,16 @@
+﻿@model RestauranteMVC.Models.Rol
+
+@{
+    ViewData["Title"] = "Eliminar Rol";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro que deseas eliminar este rol?</h4>
+<p><strong>Nombre:</strong> @Model.Nombre</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="RolID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
