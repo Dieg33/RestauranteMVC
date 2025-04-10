@@ -2,11 +2,16 @@
 
 namespace RestauranteMVC.Models
 {
-    public class MetodosPago
+    public class MetodoPago
     {
         [Key]
         public int MetodoID { get; set; }
-        public string? Nombre { get; set; }
-        public string? Descripcion {  get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Nombre { get; set; } = string.Empty;
+
+        [MaxLength(255)]
+        public string? Descripcion { get; set; }
     }
 }

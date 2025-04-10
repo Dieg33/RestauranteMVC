@@ -13,7 +13,7 @@ namespace RestauranteMVC.Models
         public DbSet<Promociones_Items> Promociones_Items { get; set; }
         public DbSet<PlatosCombos> PlatosCombos { get; set; }
         public DbSet<Mesa> Mesa { get; set; }
-        public DbSet<MetodosPago> MetodosPagos { get; set; }
+        public DbSet<MetodoPago> MetodoPagos { get; set; }
         public DbSet<Combo> Combos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
